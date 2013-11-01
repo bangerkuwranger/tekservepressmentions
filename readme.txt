@@ -1,6 +1,3 @@
-tekservepressmentions
-=====================
-
 === Tekserve Press Mentions ===
 Contributors: bangerkuwranger
 Donate link: http://www.chadacarino.com/burnallmoney.html
