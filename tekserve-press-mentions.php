@@ -57,7 +57,7 @@ function press_custom_fields() {
 }
 
 function display_tekserve_press_meta_box( $tekserve_press ) {
-    // Retrieve current name of the Director and Movie Rating based on review ID
+    // Retrieve current details based on review ID
     $tekserve_press_publication = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_publication', true ) );
 	$tekserve_press_author = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_author', true ) );
 	$tekserve_press_url = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_url', true ) );
@@ -65,15 +65,15 @@ function display_tekserve_press_meta_box( $tekserve_press ) {
     <table>
         <tr>
             <td style="width: 100%">Publication</td>
-            <td><input type="text" size="80" name="tekserve_press_publication" value="<?php echo $tekserve_press-publication; ?>" /></td>
+            <td><input type="text" size="80" name="tekserve_press_publication" value="<?php echo $tekserve_press_publication; ?>" /></td>
         </tr>
         <tr>
             <td style="width: 100%">Author</td>
-            <td><input type="text" size="80" name="tekserve_press_author" value="<?php echo $tekserve_press-author; ?>" /></td>
+            <td><input type="text" size="80" name="tekserve_press_author" value="<?php echo $tekserve_press_author; ?>" /></td>
         </tr>
         <tr>
             <td style="width: 100%">Link to Original Article</td>
-            <td><input type="text" size="80" name="tekserve_press_url" value="<?php echo $tekserve_press-url; ?>" /></td>
+            <td><input type="text" size="80" name="tekserve_press_url" value="<?php echo $tekserve_press_url; ?>" /></td>
         </tr>
     </table>
     <?php

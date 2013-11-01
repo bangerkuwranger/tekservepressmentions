@@ -1,14 +1,20 @@
-tekservepressmentions
+Tekserve Press Mentions
 =====================
 
-=== Tekserve Press Mentions ===
 Contributors: bangerkuwranger
+
 Donate link: http://www.chadacarino.com/burnallmoney.html
+
 Tags: custom post type, custom fields, press, press mentions, custom template
+
 Requires at least: 3.1
+
 Tested up to: 3.7.1
+
 Stable tag: 1.0
+
 License: MIT
+
 License URI: http://www.chadacarino.com/license-mit.html
 
 Wordpress plugin to create a custom post type for Press Mentions. Includes a template for displaying the single article, and custom fields for author, publication, and url of original article.
@@ -34,12 +40,6 @@ Add a featured image to the Press Mention, just like a post.
 
 Change the publication date of the Press Mention to the original publication date of the article.
 
-== Screenshots ==
-
-1. This is pretty much it. Woo.
-
-== Changelog ==
-
 = 1.0a =
 * added post type
 * added fields
@@ -47,4 +47,5 @@ Change the publication date of the Press Mention to the original publication dat
 == Upgrade Notice ==
 
 = 1.0a =
+
 Initial alpha is working, but fields need to be initialized with examples, not placeholder, and display template is on the way. Circling back for beta.
