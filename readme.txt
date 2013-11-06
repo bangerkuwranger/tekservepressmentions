@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: MIT
 License URI: http://www.chadacarino.com/license-mit.html
 
-Wordpress plugin to create a custom post type for Press Mentions. Includes a template for displaying the single article, and custom fields for author, publication, and url of original article.
+Wordpress plugin to create a custom post type for Press Mentions. Includes a (¡GENESIS!) template for displaying the single article, and custom fields for author, publication, and url of original article.
 
 == Description ==
 
@@ -35,7 +35,23 @@ Change the publication date of the Press Mention to the original publication dat
 
 1. This is pretty much it. Woo.
 
-== Changelog ==
+== Frequently Asked Questions ==
+
+= How do I include a logo or image? =
+
+Add a featured image to the Press Mention, just like a post.
+
+= How do I change the publication date displayed? =
+
+Change the publication date of the Press Mention to the original publication date of the article.
+
+= The template included doesn't work. What gives? =
+
+It's made for the Genesis framework (www.studiopress.com). If you're not using this framework, the template won't do anything but fill your error log. If enough people want a vanilla wordpress version, I'll do it...
+
+= 1.0 =
+* added Genesis template
+* fixed custom fields so they actually... y'know... store stuff.
 
 = 1.0a =
 * added post type
@@ -43,5 +59,6 @@ Change the publication date of the Press Mention to the original publication dat
 
 == Upgrade Notice ==
 
-= 1.0a =
-Initial alpha is working, but fields need to be initialized with examples, not placeholder, and display template is on the way. Circling back for beta.
+= 1.0 =
+
+Make sure you are using the Genesis before you install...

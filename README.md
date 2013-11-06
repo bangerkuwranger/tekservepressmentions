@@ -5,7 +5,7 @@ Contributors: bangerkuwranger
 
 Donate link: http://www.chadacarino.com/burnallmoney.html
 
-Tags: custom post type, custom fields, press, press mentions, custom template
+Tags: custom post type, custom fields, press, press mentions, custom template, genesis
 
 Requires at least: 3.1
 
@@ -17,7 +17,7 @@ License: MIT
 
 License URI: http://www.chadacarino.com/license-mit.html
 
-Wordpress plugin to create a custom post type for Press Mentions. Includes a template for displaying the single article, and custom fields for author, publication, and url of original article.
+Wordpress plugin to create a custom post type for Press Mentions. Includes a (¡GENESIS!) template for displaying the single article, and custom fields for author, publication, and url of original article.
 
 == Description ==
 
@@ -40,12 +40,20 @@ Add a featured image to the Press Mention, just like a post.
 
 Change the publication date of the Press Mention to the original publication date of the article.
 
+= The template included doesn't work. What gives? =
+
+It's made for the Genesis framework (www.studiopress.com). If you're not using this framework, the template won't do anything but fill your error log. If enough people want a vanilla wordpress version, I'll do it...
+
+= 1.0 =
+* added Genesis template
+* fixed custom fields so they actually... y'know... store stuff.
+
 = 1.0a =
 * added post type
 * added fields
 
 == Upgrade Notice ==
 
-= 1.0a =
+= 1.0 =
 
-Initial alpha is working, but fields need to be initialized with examples, not placeholder, and display template is on the way. Circling back for beta.
+Make sure you are using the Genesis before you install...
