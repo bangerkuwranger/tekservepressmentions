@@ -130,10 +130,3 @@ function include_tekserve_press_style() {
 }
 
 add_action( 'wp_enqueue_scripts', 'include_tekserve_press_style' );
-
-add_filter( 'genesis_post_info', 'post_info_filter' );
-
-function post_info_filter($post_info) {
-    $post_info = '[post_date] [post_edit]';
-	return $post_info;
-}

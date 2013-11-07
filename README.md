@@ -11,7 +11,7 @@ Requires at least: 3.1
 
 Tested up to: 3.7.1
 
-Stable tag: 1.0
+Stable tag: 1.1
 
 License: MIT
 
@@ -44,6 +44,10 @@ Change the publication date of the Press Mention to the original publication dat
 
 It's made for the Genesis framework (www.studiopress.com). If you're not using this framework, the template won't do anything but fill your error log. If enough people want a vanilla wordpress version, I'll do it...
 
+= 1.1 =
+* cleaned template code
+* made byline easier to read
+
 = 1.0 =
 * added Genesis template
 * fixed custom fields so they actually... y'know... store stuff.
@@ -54,6 +58,6 @@ It's made for the Genesis framework (www.studiopress.com). If you're not using t
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.1 =
 
 Make sure you are using the Genesis before you install...
