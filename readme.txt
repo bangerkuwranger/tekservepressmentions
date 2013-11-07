@@ -49,6 +49,8 @@ Change the publication date of the Press Mention to the original publication dat
 
 It's made for the Genesis framework (www.studiopress.com). If you're not using this framework, the template won't do anything but fill your error log. If enough people want a vanilla wordpress version, I'll do it...
 
+== Changelog ==
+
 = 1.1 =
 * cleaned template code
 * made byline easier to read
