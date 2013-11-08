@@ -4,7 +4,7 @@ Donate link: http://www.chadacarino.com/burnallmoney.html
 Tags: custom post type, custom fields, press, press mentions, custom template
 Requires at least: 3.1
 Tested up to: 3.7.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: MIT
 License URI: http://www.chadacarino.com/license-mit.html
 
@@ -31,23 +31,13 @@ Add a featured image to the Press Mention, just like a post.
 
 Change the publication date of the Press Mention to the original publication date of the article.
 
-== Screenshots ==
-
-1. This is pretty much it. Woo.
-
-== Frequently Asked Questions ==
-
-= How do I include a logo or image? =
-
-Add a featured image to the Press Mention, just like a post.
-
-= How do I change the publication date displayed? =
-
-Change the publication date of the Press Mention to the original publication date of the article.
-
 = The template included doesn't work. What gives? =
 
 It's made for the Genesis framework (www.studiopress.com). If you're not using this framework, the template won't do anything but fill your error log. If enough people want a vanilla wordpress version, I'll do it...
+
+== Screenshots ==
+
+1. This is pretty much it. Woo.
 
 == Changelog ==
 
