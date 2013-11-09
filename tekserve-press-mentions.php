@@ -126,7 +126,7 @@ function include_template_function( $template_path ) {
 //use css to format custom field entries on single page
 
 function include_tekserve_press_style() {
-	wp_enqueue_style ( 'tekserve_press_mentions', plugins_url().'/tekservepressmentions/tekserve_press_mentions.css' );
+	wp_enqueue_style ( 'tekserve_press_mentions', plugins_url().'/tekserve-press-mentions/tekserve_press_mentions.css' );
 }
 
 add_action( 'wp_enqueue_scripts', 'include_tekserve_press_style' );
