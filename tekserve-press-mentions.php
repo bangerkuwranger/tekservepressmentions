@@ -3,7 +3,7 @@
  * Plugin Name: Tekserve Press Mentions
  * Plugin URI: https://github.com/bangerkuwranger
  * Description: Custom Post Type for Press Mentions; Includes Custom Fields
- * Version: 1.1
+ * Version: 1.2
  * Author: Chad A. Carino
  * Author URI: http://www.chadacarino.com
  * License: MIT

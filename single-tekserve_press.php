@@ -9,7 +9,7 @@
 add_action( 'genesis_after_post_title', 'tekserve_press_date_only' );
 function tekserve_press_date_only() {
 	$post_info = get_the_date();
-	echo '<div id="tekserve-press-meta"><a href="'.genesis_get_custom_field('tekserve_press_url').'"><div id="tekserve-press-date">Originally appeared on '.$post_info.' </div>';
+	echo '<div id="tekserve-press-meta"><a href="'.genesis_get_custom_field('tekserve_press_url').'" target="_blank"><div id="tekserve-press-date">Originally appeared on '.$post_info.' </div>';
 }
 
 add_action('genesis_after_post_title', 'tekserve_press_publication');
