@@ -106,9 +106,9 @@ function add_tekserve_press_fields( $tekserve_press_id, $tekserve_press ) {
 
 //use custom template when displaying single entry
 
-add_filter( 'template_include', 'include_template_function', 1 );
+add_filter( 'template_include', 'include_tekserve_press_mentions_template_function', 1 );
 
-function include_template_function( $template_path ) {
+function include_tekserve_press_mentions_template_function( $template_path ) {
     if ( get_post_type() == 'tekserve_press' ) {
         if ( is_single() ) {
             // checks if the file exists in the theme first,
