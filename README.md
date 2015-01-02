@@ -9,9 +9,9 @@ Tags: custom post type, custom fields, press, press mentions, custom template, g
 
 Requires at least: 3.1
 
-Tested up to: 3.7.1
+Tested up to: 4.1
 
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 License: MIT
 
