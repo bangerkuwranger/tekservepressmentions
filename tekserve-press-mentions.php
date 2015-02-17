@@ -3,7 +3,7 @@
  * Plugin Name: Tekserve Press Mentions
  * Plugin URI: https://github.com/bangerkuwranger
  * Description: Custom Post Type for Press Mentions; Includes Custom Fields
- * Version: 1.2.1
+ * Version: 1.3
  * Author: Chad A. Carino
  * Author URI: http://www.chadacarino.com
  * License: MIT
@@ -19,10 +19,48 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-//create custom post type
 
-add_action( 'init', 'create_post_type_press' );
-function create_post_type_press() {
+
+//used for conditional enqueing. standard method for all of our plugins.
+$tekserve_press_mentions_queue = array();
+
+//include css to format press mention(s) 
+function register_tekserve_press_mentions_styles() {
+
+	wp_register_style( 'tekserve_press_mentions_css', plugins_url().'/tekserve-press-mentions/tekserve_press_mentions.css', array(), '1.3' );
+
+}	//end include_tekserve_press_mentions_styles()
+
+add_action( 'wp_enqueue_scripts', 'register_tekserve_press_mentions_styles' );
+
+function tekserve_press_mentions_enqueue() {
+
+	global $tekserve_press_mentions_queue;
+	$tekserve_press_mentions_queue['tekserve_press_mentions_css'] = 'css';
+	foreach( $tekserve_press_mentions_queue as $item => $type ) {
+	
+		if( $type == 'css' ) {
+		
+			wp_enqueue_style( $item );
+		
+		}	//end if( $type == 'css' )
+		
+		if( $type == 'js' ) {
+		
+			wp_enqueue_script( $item );
+		
+		}	//end if( $type == 'js' )
+		
+	}	//end foreach( $tekserve_press_mentions_queue as $item => $type )
+	
+}	//end tekserve_press_mentions_enqueue()
+
+
+
+//create custom post type
+add_action( 'init', 'create_post_type_tekserve_press_mentions' );
+function create_post_type_tekserve_press_mentions() {
+
 	register_post_type( 'tekserve_press',
 		array(
 			'labels' => array(
@@ -42,30 +80,35 @@ function create_post_type_press() {
 			),
 			'public' => true,
 			'has_archive' => true,
-			'rewrite' => array('slug' => 'press'),
+			'rewrite' => array( 'slug' => 'press' ),
             'supports' => array( 'title', 'editor', 'comments', 'excerpt', 'thumbnail' ),
 		)
 	);
-}
 
-add_action( 'admin_init', 'press_custom_fields' );
+}	//end create_post_type_tekserve_press_mentions()
+
+
 
 //add the meta box in the post editor
+add_action( 'admin_init', 'tekserve_press_mentions_custom_fields' );
+function tekserve_press_mentions_custom_fields() {
 
-function press_custom_fields() {
     add_meta_box( 'tekserve_press_meta_box',
         'Article Details',
-        'display_tekserve_press_meta_box',
+        'display_tekserve_press_mentions_meta_box',
         'tekserve_press', 'normal', 'high'
     );
-}
 
-// Retrieve current details based on review ID
+}	//end tekserve_press_mentions_custom_fields()
 
-function display_tekserve_press_meta_box( $tekserve_press ) {
-    $tekserve_press_publication = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_publication', true ) );
-	$tekserve_press_author = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_author', true ) );
-	$tekserve_press_url = esc_html( get_post_meta( $tekserve_press->ID, 'tekserve_press_url', true ) );
+
+
+// Retrieve current details based on press mention ID
+function display_tekserve_press_mentions_meta_box( $tekserve_press_mention ) {
+
+    $tekserve_press_publication = esc_html( get_post_meta( $tekserve_press_mention->ID, 'tekserve_press_publication', true ) );
+	$tekserve_press_author = esc_html( get_post_meta( $tekserve_press_mention->ID, 'tekserve_press_author', true ) );
+	$tekserve_press_url = esc_html( get_post_meta( $tekserve_press_mention->ID, 'tekserve_press_url', true ) );
     ?>
     <table>
         <tr>
@@ -82,51 +125,66 @@ function display_tekserve_press_meta_box( $tekserve_press ) {
         </tr>
     </table>
     <?php
-}
 
-add_action( 'save_post', 'add_tekserve_press_fields', 10, 2 );
+}	//end display_tekserve_press_mentions_meta_box( $tekserve_press_mention )
+
+
 
 //add custom field data and save to db
+add_action( 'save_post', 'add_tekserve_press_mentions_fields', 10, 2 );
+function add_tekserve_press_mentions_fields( $tekserve_press_mention_id, $tekserve_press ) {
 
-function add_tekserve_press_fields( $tekserve_press_id, $tekserve_press ) {
     // Check post type for 'tekserve_press'
     if ( $tekserve_press->post_type == 'tekserve_press' ) {
+    
         // Store data in post meta table if present in post data
         if ( isset( $_POST['tekserve_press_publication'] ) && $_POST['tekserve_press_publication'] != '' ) {
-            update_post_meta( $tekserve_press_id, 'tekserve_press_publication', sanitize_text_field( $_REQUEST['tekserve_press_publication'] ) );
-        }
+        
+            update_post_meta( $tekserve_press_mention_id, 'tekserve_press_publication', sanitize_text_field( $_REQUEST['tekserve_press_publication'] ) );
+        
+        }	//end if ( isset( $_POST['tekserve_press_publication'] ) && $_POST['tekserve_press_publication'] != '' )
         if ( isset( $_POST['tekserve_press_author'] ) && $_POST['tekserve_press_author'] != '' ) {
-            update_post_meta( $tekserve_press_id, 'tekserve_press_author', sanitize_text_field( $_REQUEST['tekserve_press_author'] ) );
-        }
+        
+            update_post_meta( $tekserve_press_mention_id, 'tekserve_press_author', sanitize_text_field( $_REQUEST['tekserve_press_author'] ) );
+        
+        }	//end if ( isset( $_POST['tekserve_press_author'] ) && $_POST['tekserve_press_author'] != '' )
         if ( isset( $_POST['tekserve_press_url'] ) && $_POST['tekserve_press_url'] != '' ) {
-            update_post_meta( $tekserve_press_id, 'tekserve_press_url', sanitize_text_field( $_REQUEST['tekserve_press_url'] ) );
-        }
-    }
-}
+        
+            update_post_meta( $tekserve_press_mention_id, 'tekserve_press_url', sanitize_text_field( $_REQUEST['tekserve_press_url'] ) );
+        
+        }	//end if ( isset( $_POST['tekserve_press_url'] ) && $_POST['tekserve_press_url'] != '' )
+    
+    }	//end if ( $tekserve_press->post_type == 'tekserve_press' )
+
+}	//end add_tekserve_press_mentions_fields( $tekserve_press_mention_id, $tekserve_press )
+
+
 
 //use custom template when displaying single entry
-
 add_filter( 'template_include', 'include_tekserve_press_mentions_template_function', 1 );
-
 function include_tekserve_press_mentions_template_function( $template_path ) {
+	
+	// Check post type for 'tekserve_press'
     if ( get_post_type() == 'tekserve_press' ) {
+    
         if ( is_single() ) {
+        
             // checks if the file exists in the theme first,
             // otherwise serve the file from the plugin
             if ( $theme_file = locate_template( array ( 'single-tekserve_press.php' ) ) ) {
+            
                 $template_path = $theme_file;
-            } else {
-                $template_path = plugin_dir_path( __FILE__ ) . 'single-tekserve_press.php';
+            
             }
-        }
-    }
+            else {
+            
+                $template_path = plugin_dir_path( __FILE__ ) . 'single-tekserve_press.php';
+            
+            }	//end if ( $theme_file = locate_template( array ( 'single-tekserve_press.php' ) ) )
+        
+        }	//end if ( is_single() )
+    
+    }	//end if ( get_post_type() == 'tekserve_press' )
     return $template_path;
-}
 
-//use css to format custom field entries on single page
-
-function include_tekserve_press_style() {
-	wp_enqueue_style ( 'tekserve_press_mentions', plugins_url().'/tekserve-press-mentions/tekserve_press_mentions.css' );
-}
-
-add_action( 'wp_enqueue_scripts', 'include_tekserve_press_style' );
+}	//end include_tekserve_press_mentions_template_function( $template_path )
