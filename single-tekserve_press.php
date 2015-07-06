@@ -17,7 +17,7 @@ if ( function_exists( 'tekserve_press_mentions_enqueue' ) ) {
 
 
 // Customize the post info function to display custom fields
-add_action( 'genesis_after_post_title', 'tekserve_press_mentions_date_only' );
+add_action( 'genesis_entry_header', 'tekserve_press_mentions_date_only', 6 );
 function tekserve_press_mentions_date_only() {
 
 	$post_info = get_the_date();
@@ -27,7 +27,7 @@ function tekserve_press_mentions_date_only() {
 
 
 //display the publication after the title
-add_action( 'genesis_after_post_title', 'tekserve_press_mentions_publication' );
+add_action( 'genesis_entry_header', 'tekserve_press_mentions_publication', 7 );
 function tekserve_press_mentions_publication() {
 
 	if ( is_single() && genesis_get_custom_field( 'tekserve_press_publication' ) ) {
@@ -41,7 +41,7 @@ function tekserve_press_mentions_publication() {
 
 
 //display the author after the title
-add_action( 'genesis_after_post_title', 'tekserve_press_mentions_author' );
+add_action( 'genesis_entry_header', 'tekserve_press_mentions_author', 8 );
 function tekserve_press_mentions_author() {
 
 	if ( is_single() && genesis_get_custom_field( 'tekserve_press_author' ) ) {
@@ -55,7 +55,7 @@ function tekserve_press_mentions_author() {
 
 
 //display featured image before title
-add_action( 'genesis_before_post_title', 'tekserve_press_mentions_logo' );
+add_action( 'genesis_entry_header', 'tekserve_press_mentions_logo', 4 );
 function tekserve_press_mentions_logo() {
 
 	$press_logo = get_the_post_thumbnail( $post_id, 'full' );
@@ -66,7 +66,7 @@ function tekserve_press_mentions_logo() {
 
 
 //Remove Post Info
-remove_action( 'genesis_after_post_title', 'genesis_post_meta' );
+remove_action( 'genesis_entry_header', 'genesis_entry_meta' );
 
 
 

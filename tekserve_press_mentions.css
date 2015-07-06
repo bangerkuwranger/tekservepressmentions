@@ -1,8 +1,10 @@
 #tekserve-press-date,
 #tekserve-press-author,
 #tekserve-press-publication {
-
 	display: inline-block;
 	margin-right: 1em;
+}
 
+.single-tekserve_press .entry-meta {
+	display: none;
 }

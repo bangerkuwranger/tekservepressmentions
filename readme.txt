@@ -3,8 +3,8 @@ Contributors: bangerkuwranger
 Donate link: http://www.chadacarino.com/burnallmoney.html
 Tags: custom post type, custom fields, press, press mentions, custom template
 Requires at least: 3.1
-Tested up to: 4.1
-Stable tag: 1.3
+Tested up to: 4.2
+Stable tag: 1.3.1
 License: MIT
 License URI: http://www.chadacarino.com/license-mit.html
 
