@@ -8,6 +8,7 @@
 
  
 //enqueue style sheet
+
 if ( function_exists( 'tekserve_press_mentions_enqueue' ) ) {
 
 	add_action( 'wp_enqueue_scripts', 'tekserve_press_mentions_enqueue');
@@ -17,6 +18,7 @@ if ( function_exists( 'tekserve_press_mentions_enqueue' ) ) {
 
 
 // Customize the post info function to display custom fields
+
 add_action( 'genesis_entry_header', 'tekserve_press_mentions_date_only', 6 );
 function tekserve_press_mentions_date_only() {
 
@@ -27,6 +29,7 @@ function tekserve_press_mentions_date_only() {
 
 
 //display the publication after the title
+
 add_action( 'genesis_entry_header', 'tekserve_press_mentions_publication', 7 );
 function tekserve_press_mentions_publication() {
 
@@ -41,6 +44,7 @@ function tekserve_press_mentions_publication() {
 
 
 //display the author after the title
+
 add_action( 'genesis_entry_header', 'tekserve_press_mentions_author', 8 );
 function tekserve_press_mentions_author() {
 
@@ -55,6 +59,7 @@ function tekserve_press_mentions_author() {
 
 
 //display featured image before title
+
 add_action( 'genesis_entry_header', 'tekserve_press_mentions_logo', 4 );
 function tekserve_press_mentions_logo() {
 
@@ -66,7 +71,16 @@ function tekserve_press_mentions_logo() {
 
 
 //Remove Post Info
+
 remove_action( 'genesis_entry_header', 'genesis_entry_meta' );
+
+
+
+//move title to top
+
+remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+add_action( 'genesis_entry_header', 'genesis_do_post_title', 1 );
+
 
 
 
